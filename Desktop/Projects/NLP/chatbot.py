@@ -1,6 +1,7 @@
 import json
 import tkinter as tk
 import tkinter.ttk as ttk
+from tkinter import scrolledtext
 from src.src import get_sentiment
 
 class SentimentChatbotGUI:
