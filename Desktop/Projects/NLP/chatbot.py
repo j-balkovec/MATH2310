@@ -1,60 +1,6 @@
-'''STABLE VERSION
-import json
-import tkinter as tk
-from tkinter import scrolledtext
-from tkinter import ttk
-from src.src import get_sentiment
-
-class SentimentChatbotGUI:
-  def __init__(self, master):
-    self.master = master
-    master.title("Sentiment Analysis Chatbot")
-    master.geometry("600x400")
-
-    style = ttk.Style()
-    style.theme_use("clam")
-
-    self.input_label = ttk.Label(master, text="Enter a sentence:")
-    self.input_label.pack()
-
-    self.input_entry = ttk.Entry(master)
-    self.input_entry.pack()
-
-    self.output_text = scrolledtext.ScrolledText(master, wrap=tk.WORD, width=60, height=10)
-    self.output_text.pack()
-
-    self.analyze_button = ttk.Button(master, text="Analyze", command=self.analyze_sentence)
-    self.analyze_button.pack()
-
-    self.exit_button = ttk.Button(master, text="Exit", command=self.master.destroy)
-    self.exit_button.pack()
-
-  def analyze_sentence(self):
-    sentence = self.input_entry.get()
-    if sentence:
-      response = chatbot_response(sentence)
-      self.output_text.insert(tk.END, response + "\n")
-      self.output_text.yview(tk.END)
-      self.input_entry.delete(0, tk.END) 
-
-def chatbot_response(sentence: str) -> str:
-  data = get_sentiment(sentence)
-  json_data = json.dumps(data, indent=4, separators=(',', ': '))
-  return f"Chatbot Response:\n{json_data}"
-
-def main():
-  root = tk.Tk()
-  gui = SentimentChatbotGUI(root)
-  root.mainloop()
-
-if __name__ == "__main__":
-  main()
-'''
-
 import json
 import tkinter as tk
 import tkinter.ttk as ttk
-from tkinter import scrolledtext
 from src.src import get_sentiment
 
 class SentimentChatbotGUI:
@@ -73,29 +19,31 @@ class SentimentChatbotGUI:
         self.input_entry = ttk.Entry(self.chat_frame, style="Rounded.TEntry")
         self.input_entry.pack(side=tk.TOP, fill="both", expand=True, padx=10, pady=10)
 
-        self.analyze_button = tk.Button(master, text="Analyze", command=self.analyze_sentence, bg="green", fg="white", padx=10)
+        self.analyze_button = tk.Button(master, text="Analyze", command=self.analyze_sentence, bg="green", fg="black", padx=10)
         self.analyze_button.pack(side=tk.LEFT, padx=(10, 5), pady=5)
 
-        self.exit_button = tk.Button(master, text="Exit", command=self.master.destroy, bg="green", fg="white", padx=10)
+        self.exit_button = tk.Button(master, text="Exit", command=self.master.destroy, bg="green", fg="black", padx=10)
         self.exit_button.pack(side=tk.RIGHT, padx=(5, 10), pady=5)
 
         # Configure style for rounded Entry
         style = ttk.Style()
-        style.configure("Rounded.TEntry", padding=(10, 5), relief="flat", background="white", borderwidth=5, focuscolor="green", focusthickness=2)
+        style.configure("Rounded.TEntry", padding=(10, 5), relief="flat", background="gray", borderwidth=5, focuscolor="green", focusthickness=2)
 
+        self.input_entry.bind("<Return>", lambda event: self.analyze_sentence())
+        #self.master.bind("<Return>", lambda event: self.analyze_sentence())
 
     def analyze_sentence(self):
         sentence = self.input_entry.get()
         if sentence:
             response = chatbot_response(sentence)
-            self.output_text.insert(tk.END, f"You: {sentence}\nChatbot: {response}\n\n")
+            self.output_text.insert(tk.END, f"You: \"{sentence}\"\nChatbot: {response}\n\n")
             self.output_text.yview(tk.END)
             self.input_entry.delete(0, tk.END)
 
 def chatbot_response(sentence: str) -> str:
     data = get_sentiment(sentence)
     json_data = json.dumps(data, indent=4, separators=(',', ': '))
-    return f"Chatbot Response:\n{json_data}"
+    return f"\n{json_data}"
 
 def main():
     root = tk.Tk()
