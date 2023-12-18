@@ -30,9 +30,9 @@ Python 3.11.4 env
 import string
 import re
 import nltk
-from nltk.corpus import stopwords
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from textblob import TextBlob
+
 import logging
 
 """__constants__"""
@@ -41,7 +41,7 @@ LOGGER_NAME: str = "File: src.py"
 logger = logging.getLogger(LOGGER_NAME)
 logger.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-file_handler = logging.FileHandler('logs/chatbot.log')
+file_handler = logging.FileHandler('logs/src.log')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
   
@@ -64,15 +64,6 @@ def tokenize(sentence: str) -> list:
   logger.info(f"[sentence tokenized]: {placeholder}")
   return placeholder
 
-def remove_stopwords(sentence: list) -> list:
-  """__doc__
-  Remove stopwords from a sentence.
-  """
-  stopwords = nltk.corpus.stopwords.words('english')
-  placeholder = [word for word in sentence if word not in stopwords]
-  logger.info(f"[sentence stripped of stopwords]: {placeholder}")
-  return placeholder
-
 def stem(sentence: list) -> list:
   """__doc__
   Stem a sentence.
@@ -82,27 +73,18 @@ def stem(sentence: list) -> list:
   logger.info(f"[sentence stemmed]: {placeholder}")
   return placeholder
 
-def lemmatize(sentence: list) -> list:
-  """__doc__
-  Lemmatize a sentence.
-  """
-  lemmatizer = nltk.stem.WordNetLemmatizer()
-  placeholder = [lemmatizer.lemmatize(word) for word in sentence]
-  logger.info(f"[sentence lemmatized]: {placeholder}")
-  return placeholder
-
 def preprocess(sentence: str) -> list:
   """__doc__
   Preprocess a sentence.
   """
   sentence = strip_characters(sentence)
   sentence = tokenize(sentence)
-  sentence = remove_stopwords(sentence)
-  sentence = lemmatize(sentence)
   sentence = stem(sentence)
+  
+  logger.info(f"[sentence preprocessed]: {sentence}")
   return sentence
 
-def get_polarity(sentence: str) -> float:
+def get_polarity(sentence: list) -> float:
   """
   Calculate the polarity score of a given sentence.
 
@@ -112,11 +94,15 @@ def get_polarity(sentence: str) -> float:
   Returns:
     float: The polarity score of the sentence.
   """
+  sentence: str = " ".join(sentence)
+  
   sid = SentimentIntensityAnalyzer()
   sentiment_scores = sid.polarity_scores(sentence)
+  
+  logger.info(f"[sentence polarity score calculated]: {sentiment_scores['compound']}")
   return sentiment_scores['compound']
 
-def get_subjectivity(sentence: str) -> float:
+def get_subjectivity(sentence: list) -> float:
     """
     Calculate the subjectivity of a given sentence.
 
@@ -127,7 +113,9 @@ def get_subjectivity(sentence: str) -> float:
     float: The subjectivity score of the sentence, ranging from 0.0 to 1.0.
       A score closer to 0.0 indicates objective content, while a score closer to 1.0 indicates subjective content.
     """
+    sentence: str = " ".join(sentence)
     blob = TextBlob(sentence)
+    logger.info(f"[sentence subjectivity score calculated]: {blob.sentiment.subjectivity}")
     return blob.sentiment.subjectivity
 
 def get_polarity_category(polarity: float) -> str:
@@ -182,8 +170,9 @@ def get_sentiment(sentence: str) -> dict:
       - polarity: The polarity category of the sentence.
       - subjectivity: The subjectivity category of the sentence.
   """
-  polarity = get_polarity(sentence)
-  subjectivity = get_subjectivity(sentence)
+  processed_sentence = preprocess(sentence)
+  polarity = get_polarity(processed_sentence)
+  subjectivity = get_subjectivity(processed_sentence)
 
   return {
     "Sentiment": {
