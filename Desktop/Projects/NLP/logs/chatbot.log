@@ -1,9 +1,39 @@
-2023-12-18 18:13:34,254 - INFO - [chatbot log cleared]
-2023-12-18 18:13:34,255 - INFO - [appearance mode set to "dark", theme set to "green"]
-2023-12-18 18:13:34,444 - INFO - [frame initialized]
-2023-12-18 18:13:34,445 - INFO - [font set to Menlo 12]
-2023-12-18 18:13:34,449 - INFO - [entry field initialized, width: 500, height: 220]
-2023-12-18 18:13:34,470 - INFO - [text box initialized, width: 500, height: 220]
-2023-12-18 18:13:34,473 - INFO - [analyze button initialized, callback "self.analyze_sentence"]
-2023-12-18 18:13:34,473 - INFO - [exit button initialized, callback "root.destroy"]
-2023-12-18 18:13:34,473 - INFO - [root window initialized]
+2023-12-18 18:17:31,485 - INFO - [chatbot log cleared]
+2023-12-18 18:17:31,486 - INFO - [appearance mode set to "dark", theme set to "green"]
+2023-12-18 18:17:31,692 - INFO - [frame initialized]
+2023-12-18 18:17:31,693 - INFO - [font set to Menlo 12]
+2023-12-18 18:17:31,697 - INFO - [entry field initialized, width: 500, height: 220]
+2023-12-18 18:17:31,714 - INFO - [text box initialized, width: 500, height: 220]
+2023-12-18 18:17:31,715 - INFO - [analyze button initialized, callback "self.analyze_sentence"]
+2023-12-18 18:17:31,716 - INFO - [exit button initialized, callback "root.destroy"]
+2023-12-18 18:17:31,716 - INFO - [root window initialized]
+2023-12-18 18:17:35,034 - INFO - [user input fetched: Jakob]
+2023-12-18 18:17:35,090 - INFO - [chatbot response fetched]: {
+    "Sentiment": {
+        "sentence": "Jakob",
+        "polarity_score": 0.0,
+        "subjectivity_score": 0.0,
+        "polarity": "Neutral",
+        "subjectivity": "Objective"
+    }
+}
+2023-12-18 18:17:35,090 - INFO - [chatbot response logged]: {
+    "Sentiment": {
+        "sentence": "Jakob",
+        "polarity_score": 0.0,
+        "subjectivity_score": 0.0,
+        "polarity": "Neutral",
+        "subjectivity": "Objective"
+    }
+}
+2023-12-18 18:17:35,090 - INFO - [chatbot response fetched: 
+{
+    "Sentiment": {
+        "sentence": "Jakob",
+        "polarity_score": 0.0,
+        "subjectivity_score": 0.0,
+        "polarity": "Neutral",
+        "subjectivity": "Objective"
+    }
+}]
+2023-12-18 18:17:35,091 - INFO - [user input failed to fetch]
