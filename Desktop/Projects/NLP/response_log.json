@@ -1,0 +1,45 @@
+{
+    "Sentiment": {
+        "sentence": "The lazy dog jumps over the brown fox.",
+        "polarity_score": -0.3612,
+        "subjectivity_score": 1.0,
+        "polarity": "Slightly Negative",
+        "subjectivity": "Subjective"
+    }
+}
+{
+    "Sentiment": {
+        "sentence": "The lazy dog jumps over the brown fox.",
+        "polarity_score": -0.3612,
+        "subjectivity_score": 1.0,
+        "polarity": "Slightly Negative",
+        "subjectivity": "Subjective"
+    }
+}
+{
+    "Sentiment": {
+        "sentence": "The lazy dog jumps over the brown fox.",
+        "polarity_score": -0.3612,
+        "subjectivity_score": 1.0,
+        "polarity": "Slightly Negative",
+        "subjectivity": "Subjective"
+    }
+}
+{
+    "Sentiment": {
+        "sentence": "The quick brown fox jumps over the lazy dog.",
+        "polarity_score": -0.3612,
+        "subjectivity_score": 0.75,
+        "polarity": "Slightly Negative",
+        "subjectivity": "Subjective"
+    }
+}
+{
+    "Sentiment": {
+        "sentence": "Jakob Balkovec",
+        "polarity_score": 0.0,
+        "subjectivity_score": 0.0,
+        "polarity": "Neutral",
+        "subjectivity": "Objective"
+    }
+}
