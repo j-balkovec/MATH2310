@@ -1,0 +1,99 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-left: 100px;
+  font-family: "Lucida Console", Courier, monospace; /*Poisci na internetu uno k ti pase*/
+  font-size: 15px;
+  color: lightgray;
+  background: linear-gradient(340deg, #ADD8E6,#738FAF 40%, transparent 40%), 
+              linear-gradient(230deg, #ADD8E6,#738FAF 40%, transparent 40%), 
+              linear-gradient(to bottom, #ADD8E6, #738FAF); /*linearni gradient pod kotom 110 in 45*/
+  background-blend-mode: multiply;
+}
+
+.main-heading {
+  font-size: 70px;
+  font-weight: 600;
+  background-image: linear-gradient(to bottom left, rgb(149, 206, 250), rgb(119, 152, 207));
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-align: center;
+  transition: font-size 0.2s ease, color 0.3s ease;
+}
+
+.main-heading:hover {
+  font-size: 80px;
+  color:white;
+}
+
+.list-section:hover {
+  margin-bottom: 20px;
+  color: white;
+  font-size: 17px;
+}
+
+.list-section {
+  margin-bottom: 20px;
+  transition: font-size 0.1s ease, color 0.1s ease;
+}
+
+/*
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+
+  ponavad das to v class k je usem skupen da ne copy pastas oz. "hardcodas" sam sm nekej zajebou
+  pa morem hardcoudat
+*/
+
+.list-heading {
+  margin-bottom: 10px;
+}
+
+.square-list {
+  list-style-type: square;
+  padding-left: 75px;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.circle-list {
+  list-style-type: circle;
+  padding-left: 75px;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.numbered-list {
+  list-style-type: decimal;
+  padding-left: 75px;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.alpha-list {
+  list-style-type: upper-alpha;
+  padding-left: 75px;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.roman-list {
+  list-style-type: upper-roman;
+  padding-left: 75px;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
