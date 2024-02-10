@@ -1,0 +1,77 @@
+.container {
+  max-width: 1000px;
+  padding: 20px;
+  margin: auto;
+  font-family: "Lucida Console", Courier, monospace; /*Poisci na internetu uno k ti pase*/
+  font-size: 20px;
+  color: white;
+  background: linear-gradient(140deg, #FFFFE0,#ffcccb 50%, transparent 40%), 
+              linear-gradient(275deg, #FFFFE0,#ffcccb 50%, transparent 40%), 
+              linear-gradient(to bottom, #FFFFE0, #ffcccb);
+  background-blend-mode: multiply;
+}
+
+.list-heading {
+  color: lightsalmon;
+  padding: 2px;
+  font-size: 30px;
+  transition: font-size 0.1s ease, color 0.1s ease;
+}
+
+.list-heading:hover {
+  color: lightcoral;
+  font-size: 33px;
+}
+
+.main-heading {
+  font-size: 40px;
+  font-weight: 600;
+  background-image: linear-gradient(to bottom left, rgb(116, 22, 157), rgb(201, 107, 220));
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-align: center;
+  transition: font-size 0.2s ease, color 0.3s ease;
+}
+
+.main-heading:hover {
+  font-size: 50px;
+  color:white;
+}
+
+.list-section:hover {
+  margin-bottom: 20px;
+  color: white;
+  font-size: 22px;
+}
+
+.list-section {
+  margin-bottom: 20px;
+  transition: font-size 0.1s ease, color 0.1s ease;
+}
+
+.default-list {
+  list-style-type: disc;
+  padding-left: 60px;
+}
+
+.numbered-list {
+  list-style-type: decimal;
+  padding-left: 85px; /*Nevem zakaj 85 in ne 60*/
+}
+
+.lettered-list {
+  list-style-type: upper-alpha;
+  padding-left: 80px;
+}
+
+.roman-list {
+  list-style-type: lower-roman;
+  padding-left: 80px;
+
+}
+
+.nested-list{
+  list-style-type: circle;
+  padding-left: 60px;
+}

@@ -1,0 +1,2 @@
+[FileLogger] Hello, file logger!
+[FileLogger] Hello, file logger!

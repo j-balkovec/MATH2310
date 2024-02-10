@@ -1,0 +1,74 @@
+{
+    "General Information": {
+        "[Hostname]": "Jakobs-MBP.home",
+        "[OS Version]": "14.0",
+        "[Kernel Version]": "Darwin Jakobs-MBP.home 23.0.0 Darwin Kernel Version 23.0.0: Fri Sep 15 14:42:57 PDT 2023; root:xnu-10002.1.13~1/RELEASE_ARM64_T8112 arm64"
+    },
+    "Hardware Information": {
+        "[CPU Information]": "Apple M2",
+        "[Memory (RAM)]": "8 GB",
+        "[Disk Usage]": "12Gi | 5%",
+        "[GPU Information]": "Chipset Model: Apple M2"
+    },
+    "Load and Performance": {
+        "[CPU Usage]": "18.84%",
+        "[Memory Usage]": "7.36719 MB",
+        "[Network Information]": ""
+    },
+    "Network Configuration": {
+        "[IP Addresses]": "10.110.1.106",
+        "[Network Interfaces]": "Port:",
+        "Address": "",
+        "Port": "",
+        "[Routing Table]": "Routing tables"
+    },
+    "Internet:": {
+        "10.110.1.1         58": "ef:68:58:68:20  UHLWIir               en0   1199",
+        "10.110.1.147       76": "c2:30:f4:1a:f6  UHLWI                 en0      !",
+        "10.110.1.148       18": "3e:ef:c7:0:84   UHLWI                 en0      !",
+        "224.0.0.251        1": "0:5e:0:0:fb      UHmLWI                en0",
+        "239.255.255.250    1": "0:5e:7f:ff:fa    UHmLWI                en0"
+    },
+    "Internet6:": {
+        "default                                 fe80": ":%utun4                            UGcIg               utun4",
+        "": ":1                                     ::1                                     UHL                   lo0",
+        "fe80": ":811f:3abc:9a2c:1e56%utun4         link#20                                 UHLI                  lo0",
+        "ff00": ":/8                                fe80::811f:3abc:9a2c:1e56%utun4         UmCI                utun4",
+        "ff01": ":%utun4/32                         fe80::811f:3abc:9a2c:1e56%utun4         UmCI                utun4",
+        "ff02": ":%utun4/32                         fe80::811f:3abc:9a2c:1e56%utun4         UmCI                utun4"
+    },
+    "Logs and Events": {
+        "[System Logs]": "Dec 23 00:02:07 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 00": "02:14 Jakobs-MBP syslogd[356]: Configuration Notice:",
+        "Dec 23 01": "08:02 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 02": "17:04 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 03": "52:24 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 04": "12:53 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 05": "13:53 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 06": "14:53 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 07": "33:56 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 08": "16:53 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 09": "17:53 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 10": "18:53 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 11": "19:53 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 12": "38:45 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 13": "21:53 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 14": "22:53 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 15": "41:28 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 16": "47:04 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 17": "52:23 Jakobs-MBP syslogd[356]: ASL Sender Statistics",
+        "Dec 23 18": "42:18 Jakobs-MBP shutdown[5576]: SHUTDOWN_TIME: 1703353338 492427",
+        "Dec 23 21": "58:52 Jakobs-MBP syslogd[362]: ASL Sender Statistics",
+        "\"<IASUPCaller": "0x600001664530>\"",
+        "Dec 23 22": "43:00 Jakobs-MBP sessionlogoutd[7295]: DEAD_PROCESS: 397 console",
+        "Dec 25 13": "54:06 Jakobs-MBP syslogd[359]: ASL Sender Statistics",
+        "Dec 25 14": "04:33 Jakobs-MBP syslogd[359]: ASL Sender Statistics"
+    },
+    "Power Supply Status": {
+        "[Power Supply Status]": "",
+        "-InternalBattery-0 (id=22085731)\t91%; discharging; 6": "50 remaining present: true"
+    },
+    "Hypervisor Information": {
+        "[Hypervisor Information]": "Not available"
+    }
+}

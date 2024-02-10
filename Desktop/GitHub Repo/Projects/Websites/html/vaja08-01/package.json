@@ -1,0 +1,19 @@
+{
+  "name": "my-package",
+  "version": "1.0.0",
+  "description": "My package description",
+  "main": "vaja.jsx",
+  "scripts": {
+    "start": "react-scripts start --jsx src/vaja.jsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "install": "^0.13.0",
+    "npm": "^9.6.4",
+    "or": "^0.2.0",
+    "react-scripts": "^5.0.1"
+  }
+}
