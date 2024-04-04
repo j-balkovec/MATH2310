@@ -1,0 +1,47 @@
+---
+title: "R_Demo"
+author: "Jakob Balkovec"
+date: "2024-03-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Sample Code
+```{r}
+# a now holds the value of 2 and b holds the value of 5
+a <- 2 
+b <- 5
+c <- a * b
+d <- a ^ b
+```
+
+## Loading a library
+```{r}
+library(readxl)
+```
+
+## Reading the data
+```{r}
+column_names <- c("trial_num", "diet", "pct_weight_change", "efficiency", "acid_det_fiber")
+
+df <- read_excel("Snowgeese.xls", col_names=column_names)
+```
+
+## Subseting the Dataframe
+```{r}
+weight_change_plants <- df[df$diet == "Plants", "pct_weight_change"]
+acid_diet_plants <- df[df$diet == "Plants", "acid_det_fiber"]
+```
+
+## Plot
+```{r}
+plot(
+  x=acid_diet_plants$acid_det_fiber,
+  y=weight_change_plants$pct_weight_change,
+  xlab="Acid Detergent Fiber",
+  ylab="Percent Weight Change",
+)
+```
