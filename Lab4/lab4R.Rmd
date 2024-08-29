@@ -1,0 +1,140 @@
+---
+title: "lab4R"
+author: "Jakob Balkovec"
+date: "2024-04-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+read_file_into_frame <- function(path_to_file) {
+  extension <- tools::file_ext(path_to_file)
+  if (extension %in% c("xls", "xlsx")) {
+    frame <- readxl::read_excel(path_to_file)
+  } else if (extension == "txt") {
+    frame <- read.table(path_to_file)
+  } else {
+    stop("Unsupported file format")
+  }
+  return(frame)
+}
+
+cheese_df <- read_file_into_frame("Data/cheese.xls")
+ropes_df <- read_file_into_frame("Data/ropes.txt")
+```
+
+# Activity One
+
+Examine the relationships between each of the three predictor variables and the response variable.
+
+**Skill Objective**: Using R, construct three `scatterplots` showing the relationship between the response variable and each of the three predictor variables. For each `scatterplot`, also find the corresponding correlation value, `r`.
+
+```{r fig.height=9, fig.width=13}
+# Load necessary libraries
+library(ggplot2)
+library(gridExtra)
+
+response_variable <- cheese_df$taste
+predictor_acetic <- cheese_df$Acetic
+predictor_h2s <- cheese_df$H2S
+predictor_lactic <- cheese_df$Lactic
+
+# correlation coefficients 
+correlation1 <- cor(response_variable, predictor_acetic)
+correlation2 <- cor(response_variable, predictor_h2s)
+correlation3 <- cor(response_variable, predictor_lactic)
+
+# Scatterplot for predictor_acetic
+plot_acetic <- ggplot(data = data.frame(response_variable, predictor_acetic), aes(x = predictor_acetic, y = response_variable)) +
+  geom_point() +
+  labs(title = "Scatterplot for Acetic",
+       x = "Acetic",
+       y = "Taste") +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  annotate("text", x = min(predictor_acetic), y = max(response_variable), 
+           label = paste("Correlation (r) =", round(correlation1, 2)), hjust = 0, vjust = 1)
+
+# Scatterplot for predictor_h2s
+plot_h2s <- ggplot(data = data.frame(response_variable, predictor_h2s), aes(x = predictor_h2s, y = response_variable)) +
+  geom_point() +
+  labs(title = "Scatterplot for H2S",
+       x = "H2S",
+       y = "Taste") +
+  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +
+  annotate("text", x = min(predictor_h2s), y = max(response_variable), 
+           label = paste("Correlation (r) =", round(correlation2, 2)), hjust = 0, vjust = 1)
+
+# Scatterplot for predictor_lactic
+plot_lactic <- ggplot(data = data.frame(response_variable, predictor_lactic), aes(x = predictor_lactic, y = response_variable)) +
+  geom_point() +
+  labs(title = "Scatterplot for Lactic Acid",
+       x = "Lactic",
+       y = "Taste") +
+  geom_smooth(method = "lm", se = FALSE, color = "navy") +
+  annotate("text", x = min(predictor_lactic), y = max(response_variable), 
+           label = paste("Correlation (r) =", round(correlation3, 2)), hjust = 0, vjust = 1)
+
+grid.arrange(plot_acetic, plot_lactic, plot_h2s)
+```
+
+# Activity Two
+
+Now we will look at how we could use information about hydrogen sulfide levels to predict taste ratings.
+
+**Skill Objective**: Find the equation of the regression line predicting taste score based on hydrogen sulfide level.
+Analysis Objective: What taste score would you predict for a cheese whose hydrogen sulfide measurement was 5.0?
+
+```{r}
+lm_model <- lm(taste ~ H2S, data = cheese_df)
+
+# Get summary of the model
+summary(lm_model)
+
+# Get coefficients of the model
+coefficients(lm_model)
+
+# Predict taste score for H2S level of 5.0
+predicted_taste <- predict(lm_model, newdata = data.frame(H2S = 5.0))
+predicted_taste
+
+# line <- Y = a + b * X
+```
+
+# Activity Three
+
+Now we will assess the quality of this regression model
+
+**Skill Objective:** Using R, find the value of the coefficient of determination, r2, for the regression model predicting taste rating based on hydrogen sulfide levels.
+Analysis Objective: In one sentence, explain what this r2 value tells you about the quality of the regression model.
+
+```{r}
+r_sq <- summary(lm_model)$r.squared
+r_sq
+```
+
+# Activity Four
+
+Occasionally in lab we will look at ideas that expand somewhat beyond what is covered in our book. This activity is one such time. In class, and in our book, we have seen how to construct a regression equation using one variable to predict another. But the same basic idea can be used to construct a regression equation using multiple variables to predict a variable. So, for example, we might have an equation oftheformY=a+bX+cW+dZ,whereX,W,andZareallvariableswewanttouse to make our prediction.
+While we will not be learning the mathematics to estimate such an equation by hand, it is quite simple to estimate an equation like this using R or other statistical software.
+
+**Skill Objective**: Using R, Estimate the equation of the regression line predicting taste score based on all three predictor variables in a single equation.
+Analysis Objective: Based on your regression equation, what taste score would you predict for a cheese whose hydrogen sulfide measurement was 5.0, whose acetic acid measurement was 6.1, and whose lactic acid measurement was 0.90? Also, based on the output from R, what proportion of the variability in taste scores can be explained by this model using all three predictor variables?
+
+```{r}
+# Fit multiple linear regression model
+mlm_model <- lm(taste ~ H2S + Acetic + Lactic, data = cheese_df)
+
+# Get summary of the model
+summary(mlm_model)
+
+# Predict taste score for specific values of predictor variables
+new_data <- data.frame(H2S = 5.0, Acetic = 6.1, Lactic = 0.90)
+predicted_taste <- predict(mlm_model, newdata = new_data)
+predicted_taste
+
+r_sq <- summary(mlm_model)$r.squared
+r_sq
+```
