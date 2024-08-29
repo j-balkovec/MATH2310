@@ -1,0 +1,211 @@
+---
+title: "MATH 2310 - Probability"
+author: "Jakob Balkovec"
+date: "2024-05-03"
+output: html_document
+---
+
+```{r echo=FALSE}
+# Notes
+
+notes <- "
+          Q1 - OK
+          Q2 - OK
+          Q3 - OK
+          Q4 - IDK
+          Q5 - IDK
+          Q6 - IDK
+          Q7 - OK
+          Q8 - OK
+"
+```
+
+# Activity One
+
+For this lab, we will be looking at data on incomes for Washington state from the 2000 census, available in the file census.txt
+You will use this data to answer a number of questions regarding probabilities.
+
+For each problem, unless otherwise specified, suppose we randomly select one individual between the ages of 21 and 64 living in Washington state in 2000.
+
+```{r}
+# Define commonly used variables/functions
+
+total <-        3391405
+total_male <-   1678835
+total_female <- 1712570
+
+pretty_print <- function(question_num, prob) {
+  answer <- paste(round(prob * 100, 2), "%", sep = "")
+  cat("Answer to [Q", question_num, "]: ", answer, "\n", sep = "")
+}
+```
+
+### [Q1] - What is the probability that that individual is older than 44?
+
+```{r echo=TRUE}
+# Problem 1
+### __notes__
+# Calculate P(A)
+###
+older_than_44 <- 835590 + 490185
+
+prob_of_older_than_44 <- older_than_44/total
+
+pretty_print(question_num = 1, prob = prob_of_older_than_44)
+```
+
+### [Q2] - What is the probability that the individual has completed at least a Bachelor’s degree (that is, a Bachelor’s degree or an advanced degree)?
+
+```{r echo=TRUE}
+# Problem 2
+### __notes__
+# Calculate P(A)
+###
+bachelor_or_advanced <- 652845 + 307405
+
+prob_of_bachelors_or_advanced_degree <- bachelor_or_advanced/total
+
+pretty_print(question_num = 2, prob = prob_of_bachelors_or_advanced_degree)
+```
+
+### [Q3] - What is the probability that the individual has completed an advanced degree and worked full-time year-round in 1999?
+
+```{r echo=TRUE}
+# Problem 3
+### __notes__
+# Events are independent, since an individual doesn't need an advanced degree to work full-time year-round
+#
+# P(A) - Individual has completed an advanced degree
+# P(B) - Individual worked full-time year-round in 1999
+#
+# P(A && B) = P(A) x P(B)
+###
+
+completed_advanced_degree <- 307405
+P_of_A <- completed_advanced_degree/total
+
+worked_full_time <- 1735245
+P_of_B <- worked_full_time/total
+
+P_of_A_and_B <- P_of_A * P_of_B
+pretty_print(question_num = 3, prob = P_of_A_and_B)
+```
+
+### [Q4] - What is the probability that the individual has completed an advanced degree or worked full-time year-round in 1999?
+
+```{r echo=TRUE}
+# Problem 4
+### __notes__
+#! Assuming events are independent, since an individual doesn't need an advanced degree to work full-time year-round
+#
+# P(A) - Individual has completed an advanced degree
+# P(B) - Individual worked full-time year-round in 1999
+#
+# P(A || B) = P(A) + P(B)
+### DIFF
+
+completed_advanced_degree <- 307405
+P_of_A <- completed_advanced_degree/total
+
+worked_full_time <- 1735245
+P_of_B <- worked_full_time/total
+
+P_of_A_or_B <- P_of_A + P_of_B
+pretty_print(question_num = 4, prob = P_of_A_or_B)
+```
+
+### [Q5] - What is the probability that the individual has completed at least high school and worked full-time year-round in 1999?
+
+```{r echo=TRUE}
+# Problem 5
+### __notes__
+#! Assuming events are independent, since an individual doesn't need to graduate high school to work full-time year-round
+#
+# P(A) - Individual has completed at least high school
+# P(B) - Individual worked full-time year-round in 1999
+#
+# P(A && B) = P(A) * P(B)
+###
+
+completed_highschool <- total - 278530
+P_of_A <- completed_highschool/total
+
+worked_full_time <- 1735245
+P_of_B <- worked_full_time/total
+
+P_of_A_and_B <- P_of_A * P_of_B
+pretty_print(question_num = 5, prob = P_of_A_and_B)
+```
+
+### [Q6] - Suppose that we know that an individual did not work full-time year-round in 1999. What is the probability that they did not graduate high school?
+
+```{r echo=TRUE}
+# Problem 6
+### __notes__
+# 
+# P(A|B) = P(A && B)/P(B)
+#
+# Event A: Individual did not graduate high school
+# Event B: Individual did not work full-time year-round in 1999
+###
+
+not_a_highschool_grad <- 278530 - 81375
+P_of_A <- not_a_highschool_grad/total
+
+did_not_work_full_time <- total - 1735245
+P_of_B <- did_not_work_full_time/total
+
+P_of_A_and_B <- P_of_A * P_of_B
+P_of_A_given_B <- P_of_A_and_B/P_of_B
+pretty_print(question_num = 6, prob = P_of_A_given_B)
+```
+
+### [Q7] - Does it appear that biological sex is independent of completing high school? Explain.
+
+```{r echo=TRUE}
+# Problem 7
+### __notes__
+# Use the definition of independent events
+###
+
+not_a_high_school_grad_male <- 144875
+not_a_high_school_grad_female <- 133660
+
+high_school_grad_male <- total_male - not_a_high_school_grad_male
+high_school_grad_female <- total_female - not_a_high_school_grad_female
+
+# Proportions
+prop_high_school_male <- high_school_grad_male / total_male  
+prop_high_school_female <- high_school_grad_female / total_female
+
+pct_male_str <- paste(round(prop_high_school_male * 100, 2), "%", sep = "")
+pct_female_str <- paste(round(prop_high_school_female * 100, 2), "%", sep = "")
+
+P_of_A_and_B <- prop_high_school_female * prop_high_school_male
+
+cat("[ Male: ", pct_male_str, "] | [ Female: ", pct_female_str, "]") 
+```
+
+**[Answer]:** 
+<ul>
+    <li>
+    Approximately <strong>91.37%</strong> of males and <strong>92.20%</strong> of females have finished high school. This indicates a slightly higher completion rate among females. On the flip side, these proportions are not significantly different from the overall completion rates of males and females, it can be inferred that completing high school is not significantly influenced by biological sex. Therefore, these events can be considered independent
+    </li>
+</ul>
+
+### [Q8] - What percentage of people aged 25 to 44 years are female?
+```{r echo=TRUE}
+# Problem 8
+### __notes__
+###
+
+female_25_to_44 <- 406110 + 488830
+total_25_to_44 <- 809400 + 966115
+
+percentage_female <- (female_25_to_44 / total_25_to_44)
+
+pretty_print(question_num = 8, prob = percentage_female)
+```
+
+***
+Jakob Balkovec
